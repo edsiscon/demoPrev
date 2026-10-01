@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Jogo da Previdência Complementar</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <div class="container">
+    <header>
+      <h1>Jornada da Previdência</h1>
+      <p>Sua trajetória financeira depende das suas escolhas.</p>
+    </header>
+
+    <form id="quizForm">
+      <!-- ETAPA 1: DADOS CADASTRAIS -->
+      <section id="step1" class="step active">
+        <h2>Passo 1: Seus Dados</h2>
+        
+        <div class="field">
+          <label for="nome">Nome Completo:</label>
+          <input type="text" id="nome" name="nome" required placeholder="Seu nome" />
+        </div>
+
+        <div class="field">
+          <label for="email">E-mail:</label>
+          <input type="email" id="email" name="email" required placeholder="seu@email.com" />
+        </div>
+
+        <div class="field">
+          <label for="idade">Idade:</label>
+          <input type="number" id="idade" name="idade" min="16" max="100" required placeholder="Ex: 30" />
+        </div>
+
+        <button type="button" id="btnToCards" class="btn">Continuar</button>
+      </section>
+
+      <!-- ETAPA 2: ESCOLHA DO CARMINHO (CARDS) -->
+      <section id="stepCards" class="step">
+        <h2>Passo 2: Escolha o seu Caminho</h2>
+        <p>Selecione qual postura reflete melhor a sua jornada:</p>
+
+        <div class="cards-wrapper">
+          <div class="card card-a" id="cardA">
+            <div class="card-badge">Caminho A</div>
+            <h3>Decisão Rápida</h3>
+            <p>Você investiu em Previdência sem olhar muito os detalhes. Vamos ver como você reage no imprevisto.</p>
+          </div>
+
+          <div class="card card-b" id="cardB">
+            <div class="card-badge">Caminho B</div>
+            <h3>Decisão Consciente</h3>
+            <p>Você estudou as regras, a tributação e o funcionamento do plano antes de investir.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- ETAPA 3A: CENÁRIOS DO CAMINHO A -->
+      <section id="stepPathA" class="step">
+        <h2>Caminho A: Investimento no Escuro</h2>
+
+        <div class="question-block">
+          <p>1. Ocorreu uma emergência de saúde e você perdeu o emprego. Você resgata sua previdência imediatamente para cobrir as contas?</p>
+          <label><input type="radio" name="a1" value="0" required /> Sim, uso o dinheiro da previdência de imediato.</label>
+          <label><input type="radio" name="a1" value="10" /> Não, busco empréstimo ou renegoceio prazos antes de tocar no plano.</label>
+        </div>
+
+        <div class="question-block">
+          <p>2. Sobrou um dinheiro inesperado no final do mês. O que você faz?</p>
+          <label><input type="radio" name="a2" value="0" required /> Gasto com lazer/compras para aproveitar o momento.</label>
+          <label><input type="radio" name="a2" value="10" /> Faço um aporte extra automático no plano de previdência.</label>
+        </div>
+
+        <div class="question-block">
+          <p>3. Amigos disseram que a bolsa de valores está bombando. O que você faz com a previdência?</p>
+          <label><input type="radio" name="a3" value="0" required /> Cancelo e tiro todo o dinheiro para investir diretamente em ações sem estudar.</label>
+          <label><input type="radio" name="a3" value="10" /> Mantenho o foco no longo prazo e não mexo no plano por impulso.</label>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn secondary btnBackToCards">Voltar</button>
+          <button type="submit" class="btn">Finalizar e Enviar</button>
+        </div>
+      </section>
+
+      <!-- ETAPA 3B: CENÁRIOS DO CAMINHO B -->
+      <section id="stepPathB" class="step">
+        <h2>Caminho B: Investimento Consciente</h2>
+
+        <div class="question-block">
+          <p>1. Sabendo que o Regime Regressivo reduz o Imposto de Renda até 10% após 10 anos, qual sua estratégia para resgate?</p>
+          <label><input type="radio" name="b1" value="10" required /> Planejo manter o recurso por mais de 10 anos para pagar a menor alíquota de IR.</label>
+          <label><input type="radio" name="b1" value="0" /> Pretendo resgatar em menos de 2 anos, assumindo a alíquota máxima de 35% de IR.</label>
+        </div>
+
+        <div class="question-block">
+          <p>2. Você encontrou outro plano com taxa de administração menor e melhor rentabilidade histórica. Como age?</p>
+          <label><input type="radio" name="b2" value="10" required /> Faço a Portabilidade para o novo plano sem resgatar nem pagar imposto de renda.</label>
+          <label><input type="radio" name="b2" value="0" /> Resgato todo o valor, pago o imposto e aplico do zero no novo plano.</label>
+        </div>
+
+        <div class="question-block">
+          <p>3. Para otimizar a declaração do Imposto de Renda no modelo completo (dedução até 12% da renda tributável), qual opção escolhe?</p>
+          <label><input type="radio" name="b3" value="10" required /> Invisto no PGBL até o limite de 12% do meu rendimento bruto anual.</label>
+          <label><input type="radio" name="b3" value="0" /> Uso o VGBL achando que ele abate do imposto de renda anual.</label>
+        </div>
+
+        <div class="actions">
+          <button type="button" class="btn secondary btnBackToCards">Voltar</button>
+          <button type="submit" class="btn">Finalizar e Enviar</button>
+        </div>
+      </section>
+    </form>
+
+    <!-- RESULTADO FINAL -->
+    <div id="resultScreen" class="hidden">
+      <h2>Resultado da Análise</h2>
+      <p>Obrigado por jogar, <span id="resNome"></span>!</p>
+      
+      <div class="score-card">
+        <p>Caminho escolhido: <strong id="resCaminho">-</strong></p>
+        <p>Pontuação total: <strong id="resPontos">0</strong> / 30</p>
+        <p>Perfil / Diagnóstico: <strong id="resPerfil">-</strong></p>
+      </div>
+
+      <p id="statusEnvio" class="status-msg"></p>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
